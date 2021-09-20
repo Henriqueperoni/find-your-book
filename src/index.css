@@ -13,7 +13,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
   grid-column-gap: 3rem;
-  grid-row-gap: 3rem;
+  grid-row-gap: 1.5rem;
 }
 
 .book {
@@ -31,4 +31,39 @@ body {
 
 .book h3 {
   margin-top: 1rem;
+}
+
+/* Book Detail */
+.book-detail {
+  padding: 5rem;
+  display: flex;
+}
+
+.book-detail-img {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.book-detail-desc {
+  width: 70%;
+}
+
+.book-detail-desc p {
+  margin: 1rem 0;
+}
+
+.buy-btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.buy-btn {
+  text-decoration: none;
+  color: #0f0f0f;
+  background: #e0dcdc;
+  padding: 1rem;
+  border: 1px solid #0f0f0f;
+  cursor: pointer;
 }
