@@ -4,11 +4,16 @@ import { useParams } from "react-router-dom";
 const BookDetail = ({ books }) => {
   const { id } = useParams();
 
+  if (books.length === 0) {
+    return <h1>Loading...</h1>;
+  }
+
   const getBook = books.results.books.filter(
     (book) => book.rank === parseInt(id)
   );
   const { rank, title, author, book_image, description, buy_links } =
     getBook[0];
+
   return (
     <div className="book-detail">
       <div className="book-detail-img">

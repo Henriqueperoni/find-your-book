@@ -9,7 +9,12 @@ const Nonfiction = ({ books, isLoading }) => {
     <section className="book-container">
       {books.results.books.map((book) => {
         return (
-          <Link books={books} key={book.rank} to={`/bookdetail/${book.rank}`}>
+          <Link
+            style={{ textDecoration: "none", color: "#0f0f0f" }}
+            books={books}
+            key={book.rank}
+            to={`/bookdetail/${book.rank}`}
+          >
             <div className="book">
               <img src={book.book_image} alt="" />
               <div className="book-title">

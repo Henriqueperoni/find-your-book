@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
+import Error from "./Error";
 import BookDetail from "./pages/BookDetail";
 
 const url = `https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-nonfiction.json?api-key=${process.env.REACT_APP_BOOK_API_KEY}`;
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route path="/bookdetail/:id">
           <BookDetail books={books} isLoading={isLoading} />
+        </Route>
+        <Route path="*">
+          <Error />
         </Route>
       </Switch>
     </BrowserRouter>
