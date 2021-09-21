@@ -1,27 +1,22 @@
 import { Link } from "react-router-dom";
+import Book from "./Book";
 
-const Nonfiction = ({ books, isLoading }) => {
+const Nonfiction = ({ nonfictionBooks, isLoading }) => {
   if (isLoading) {
     return <h1>Is Loading...</h1>;
   }
 
   return (
     <section className="book-container">
-      {books.results.books.map((book) => {
+      {nonfictionBooks.results.books.map((book) => {
         return (
           <Link
             style={{ textDecoration: "none", color: "#0f0f0f" }}
-            books={books}
+            books={nonfictionBooks}
             key={book.rank}
             to={`/bookdetail/${book.rank}`}
           >
-            <div className="book">
-              <img src={book.book_image} alt="" />
-              <div className="book-title">
-                <h3>{book.title}</h3>
-                <h4>{book.author}</h4>
-              </div>
-            </div>
+            <Book {...book} />
           </Link>
         );
       })}
