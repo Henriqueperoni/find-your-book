@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Error from "./Components/Error";
 import BookDetail from "./pages/BookDetail";
+import Navbar from "./Components/Navbar";
 
 const NonfictionUrl = `https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-nonfiction.json?api-key=${process.env.REACT_APP_BOOK_API_KEY}`;
 const howToUrl = `https://api.nytimes.com/svc/books/v3/lists/current/advice-how-to-and-miscellaneous.json?api-key=${process.env.REACT_APP_BOOK_API_KEY}`;
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Navbar />
       <Switch>
         <Route exact path="/">
           <Home
