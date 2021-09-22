@@ -52,6 +52,13 @@ nav a {
   color: #0a66c2;
 }
 
+.container h1 {
+  text-align: center;
+  padding: 2rem 0 3rem 0;
+  font-size: 3rem;
+  color: #131212;
+}
+
 .container h2 {
   text-align: center;
   font-size: 2rem;
@@ -59,7 +66,7 @@ nav a {
 }
 
 .book-container {
-  margin: 4rem;
+  margin: 2rem 4rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
   grid-column-gap: 3rem;
@@ -118,6 +125,8 @@ nav a {
 }
 
 .date {
+  padding-left: 1rem;
+  padding-top: 2rem;
   display: flex;
   align-items: center;
 }

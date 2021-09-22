@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useCallback } from "react";
+
 import Home from "./pages/Home";
 import Error from "./Components/Error";
 import BookDetail from "./pages/BookDetail";
@@ -31,25 +33,28 @@ function App() {
       return month;
     }
   };
-  console.log(`APP: ${year}`);
   const newMonth = strMonth(month);
 
   const businessUrl = `https://api.nytimes.com/svc/books/v3/lists/${year}-${newMonth}-01/business-books.json?api-key=${process.env.REACT_APP_BOOK_API_KEY}`;
-  const howToUrl = `https://api.nytimes.com/svc/books/v3/lists/2021-01-20/advice-how-to-and-miscellaneous.json?api-key=${process.env.REACT_APP_BOOK_API_KEY}`;
+  const howToUrl = `https://api.nytimes.com/svc/books/v3/lists/${year}-${newMonth}-01/advice-how-to-and-miscellaneous.json?api-key=${process.env.REACT_APP_BOOK_API_KEY}`;
 
-  const fetchBooks = async () => {
-    const response = await fetch(businessUrl);
-    const newBooks = await response.json();
-    setBusinessBooks(newBooks);
-    const response1 = await fetch(howToUrl);
-    const newBooks1 = await response1.json();
-    setHowToBooks(newBooks1);
+  const fetchBooks = useCallback(async () => {
+    try {
+      const response = await fetch(businessUrl);
+      const newBooks = await response.json();
+      setBusinessBooks(newBooks);
+      const response1 = await fetch(howToUrl);
+      const newBooks1 = await response1.json();
+      setHowToBooks(newBooks1);
+    } catch (error) {
+      console.log(`ERROR :${error}`);
+    }
     setIsLoading(false);
-  };
+  }, [businessUrl, howToUrl]);
 
   useEffect(() => {
     fetchBooks();
-  }, [businessUrl]);
+  }, [fetchBooks]);
 
   return (
     <BrowserRouter>

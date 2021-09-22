@@ -1,7 +1,7 @@
 import React from "react";
 import Book from "../Components/Book";
+import NextPrev from "../Components/NextPrev";
 import { Link } from "react-router-dom";
-import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 const Home = ({
   businessBooks,
@@ -17,51 +17,16 @@ const Home = ({
     return <h1>Is Loading...</h1>;
   }
 
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const incresaseMonth = () => {
-    if (month === parseInt(currentMonth)) {
-      return setMonth(parseInt(currentMonth));
-    }
-    if (month === 12) {
-      return setYear(year + 1), setMonth(1);
-    }
-    setMonth(month + 1);
-  };
-
-  const decresaseMonth = () => {
-    if (month <= 1) {
-      return setYear(year - 1), setMonth(12);
-    }
-    setMonth(month - 1);
-  };
-
   return (
     <div className="container">
-      <div className="date">
-        <button className="next-prev-btn" onClick={() => decresaseMonth()}>
-          <FiChevronLeft />
-        </button>
-        <p>
-          {monthNames[month - 1]} - {year}
-        </p>
-        <button className="next-prev-btn" onClick={() => incresaseMonth()}>
-          <FiChevronRight />
-        </button>
-      </div>
+      <h1>New York Time Best Sellers</h1>
+      <NextPrev
+        month={month}
+        setMonth={setMonth}
+        year={year}
+        setYear={setYear}
+        currentMonth={currentMonth}
+      />
       <h2>Nonfiction Best Sellers</h2>
       <section className="book-container">
         {businessBooks.results.books.map((book) => {
@@ -77,7 +42,14 @@ const Home = ({
           );
         })}
       </section>
-      <h2>How To Best Sellers</h2>
+      <NextPrev
+        month={month}
+        setMonth={setMonth}
+        year={year}
+        setYear={setYear}
+        currentMonth={currentMonth}
+      />
+      <h2>Advice, How-To & Miscellaneous</h2>
       <section className="book-container">
         {howToBooks.results.books.map((book) => {
           return (
