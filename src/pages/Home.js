@@ -1,6 +1,7 @@
 import React from "react";
 import Book from "../Components/Book";
 import { Link } from "react-router-dom";
+import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 const Home = ({
   businessBooks,
@@ -10,6 +11,7 @@ const Home = ({
   setMonth,
   year,
   setYear,
+  currentMonth,
 }) => {
   if (isLoading) {
     return <h1>Is Loading...</h1>;
@@ -30,21 +32,32 @@ const Home = ({
     "December",
   ];
 
+  const incresaseMonth = () => {
+    if (month === parseInt(currentMonth)) {
+      return setMonth(parseInt(currentMonth));
+    }
+    if (month === 12) {
+      return setYear(year + 1), setMonth(1);
+    }
+    setMonth(month + 1);
+  };
+
   const decresaseMonth = () => {
-    console.log(`function ${month}`);
     if (month <= 1) {
       return setYear(year - 1), setMonth(12);
     }
     setMonth(month - 1);
   };
-  console.log(month);
-  console.log(year);
 
   return (
     <div className="container">
-      <button onClick={() => decresaseMonth()}>Decrease</button>
+      <button className="month-btn" onClick={() => decresaseMonth()}>
+        <FiChevronLeft />
+      </button>
       {monthNames[month - 1]} - {year}
-      <button onClick={() => setMonth(month + 1)}>Increase</button>
+      <button className="month-btn" onClick={() => incresaseMonth()}>
+        <FiChevronRight />
+      </button>
       <h2>Nonfiction Best Sellers</h2>
       <section className="book-container">
         {businessBooks.results.books.map((book) => {

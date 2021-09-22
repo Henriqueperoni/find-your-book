@@ -36,6 +36,7 @@ function App() {
 
   const businessUrl = `https://api.nytimes.com/svc/books/v3/lists/${year}-${newMonth}-01/business-books.json?api-key=${process.env.REACT_APP_BOOK_API_KEY}`;
   const howToUrl = `https://api.nytimes.com/svc/books/v3/lists/2021-01-20/advice-how-to-and-miscellaneous.json?api-key=${process.env.REACT_APP_BOOK_API_KEY}`;
+
   const fetchBooks = async () => {
     const response = await fetch(businessUrl);
     const newBooks = await response.json();
@@ -48,7 +49,7 @@ function App() {
 
   useEffect(() => {
     fetchBooks();
-  }, [month, year]);
+  }, [businessUrl]);
 
   return (
     <BrowserRouter>
@@ -63,6 +64,7 @@ function App() {
             setMonth={setMonth}
             year={year}
             setYear={setYear}
+            currentMonth={currentMonth}
           />
         </Route>
         <Route path="/bookdetail/:id">
