@@ -2,7 +2,15 @@ import React from "react";
 import Book from "../Components/Book";
 import { Link } from "react-router-dom";
 
-const Home = ({ businessBooks, howToBooks, isLoading, month, setMonth }) => {
+const Home = ({
+  businessBooks,
+  howToBooks,
+  isLoading,
+  month,
+  setMonth,
+  year,
+  setYear,
+}) => {
   if (isLoading) {
     return <h1>Is Loading...</h1>;
   }
@@ -22,10 +30,20 @@ const Home = ({ businessBooks, howToBooks, isLoading, month, setMonth }) => {
     "December",
   ];
 
+  const decresaseMonth = () => {
+    console.log(`function ${month}`);
+    if (month <= 1) {
+      return setYear(year - 1), setMonth(12);
+    }
+    setMonth(month - 1);
+  };
+  console.log(month);
+  console.log(year);
+
   return (
     <div className="container">
-      <button onClick={() => setMonth(month - 1)}>Decrease</button>
-      {monthNames[month - 1]}
+      <button onClick={() => decresaseMonth()}>Decrease</button>
+      {monthNames[month - 1]} - {year}
       <button onClick={() => setMonth(month + 1)}>Increase</button>
       <h2>Nonfiction Best Sellers</h2>
       <section className="book-container">

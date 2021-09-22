@@ -16,10 +16,12 @@ function App() {
   };
 
   const currentMonth = getCurrentMonth();
+  const currentYear = new Date().getFullYear();
 
   const [businessBooks, setBusinessBooks] = useState([]);
   const [howToBooks, setHowToBooks] = useState([]);
   const [month, setMonth] = useState(parseInt(currentMonth));
+  const [year, setYear] = useState(currentYear);
   const [isLoading, setIsLoading] = useState(true);
 
   const strMonth = (month) => {
@@ -29,12 +31,11 @@ function App() {
       return month;
     }
   };
-
+  console.log(`APP: ${year}`);
   const newMonth = strMonth(month);
 
-  const businessUrl = `https://api.nytimes.com/svc/books/v3/lists/2021-${newMonth}-01/business-books.json?api-key=${process.env.REACT_APP_BOOK_API_KEY}`;
+  const businessUrl = `https://api.nytimes.com/svc/books/v3/lists/${year}-${newMonth}-01/business-books.json?api-key=${process.env.REACT_APP_BOOK_API_KEY}`;
   const howToUrl = `https://api.nytimes.com/svc/books/v3/lists/2021-01-20/advice-how-to-and-miscellaneous.json?api-key=${process.env.REACT_APP_BOOK_API_KEY}`;
-
   const fetchBooks = async () => {
     const response = await fetch(businessUrl);
     const newBooks = await response.json();
@@ -47,7 +48,7 @@ function App() {
 
   useEffect(() => {
     fetchBooks();
-  }, [month]);
+  }, [month, year]);
 
   return (
     <BrowserRouter>
@@ -60,6 +61,8 @@ function App() {
             isLoading={isLoading}
             month={month}
             setMonth={setMonth}
+            year={year}
+            setYear={setYear}
           />
         </Route>
         <Route path="/bookdetail/:id">
