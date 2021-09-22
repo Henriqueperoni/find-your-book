@@ -51,13 +51,17 @@ const Home = ({
 
   return (
     <div className="container">
-      <button className="month-btn" onClick={() => decresaseMonth()}>
-        <FiChevronLeft />
-      </button>
-      {monthNames[month - 1]} - {year}
-      <button className="month-btn" onClick={() => incresaseMonth()}>
-        <FiChevronRight />
-      </button>
+      <div className="date">
+        <button className="next-prev-btn" onClick={() => decresaseMonth()}>
+          <FiChevronLeft />
+        </button>
+        <p>
+          {monthNames[month - 1]} - {year}
+        </p>
+        <button className="next-prev-btn" onClick={() => incresaseMonth()}>
+          <FiChevronRight />
+        </button>
+      </div>
       <h2>Nonfiction Best Sellers</h2>
       <section className="book-container">
         {businessBooks.results.books.map((book) => {

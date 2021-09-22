@@ -116,3 +116,19 @@ nav a {
   border: 1px solid #0f0f0f;
   cursor: pointer;
 }
+
+.date {
+  display: flex;
+  align-items: center;
+}
+
+.date p {
+  padding-bottom: 0.5rem;
+}
+
+.next-prev-btn {
+  background: transparent;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
