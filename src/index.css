@@ -6,6 +6,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
 }
 
 nav {
@@ -31,6 +32,7 @@ nav ul {
   width: 10%;
   display: flex;
   justify-content: space-evenly;
+  margin-right: 1rem;
 }
 
 nav li {
@@ -45,7 +47,7 @@ nav a {
 .linkedin:hover,
 .github:hover {
   transform: scale(1.2);
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .linkedin:hover {
@@ -98,11 +100,11 @@ nav a {
 .book-detail-img {
   display: flex;
   justify-content: center;
-  width: 30%;
+  margin: 0 2rem;
 }
 
 .book-detail-desc {
-  width: 70%;
+  margin: 0 auto;
 }
 
 .book-detail-desc p {
@@ -119,6 +121,7 @@ nav a {
   text-decoration: none;
   color: #0f0f0f;
   background: #e0dcdc;
+  margin: 0.5rem 0.5rem 0.5rem 0;
   padding: 1rem;
   border: 1px solid #0f0f0f;
   cursor: pointer;
@@ -140,4 +143,31 @@ nav a {
   font-size: 1.5rem;
   border: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+  .book-title {
+    margin: 0 auto;
+  }
+
+  .book-detail {
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .book-detail-img {
+    margin: 0 auto;
+  }
+
+  .book-detail-img img {
+    max-width: 100%;
+  }
+
+  .book-detail-desc {
+    margin: 2rem auto;
+  }
+
+  .buy-btn-container {
+    justify-content: center;
+  }
 }
