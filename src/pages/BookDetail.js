@@ -1,11 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import Loading from "../Components/Loading";
 
 const BookDetail = ({ books }) => {
   const { id } = useParams();
 
   if (books.length === 0) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   const getBook = books.results.books.filter(

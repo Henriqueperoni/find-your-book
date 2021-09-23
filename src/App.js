@@ -39,6 +39,7 @@ function App() {
   const howToUrl = `https://api.nytimes.com/svc/books/v3/lists/${year}-${newMonth}-01/advice-how-to-and-miscellaneous.json?api-key=${process.env.REACT_APP_BOOK_API_KEY}`;
 
   const fetchBooks = useCallback(async () => {
+    setIsLoading(true);
     try {
       const response = await fetch(businessUrl);
       const newBooks = await response.json();

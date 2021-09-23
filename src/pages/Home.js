@@ -1,7 +1,8 @@
 import React from "react";
-import Book from "../Components/Book";
-import NextPrev from "../Components/NextPrev";
 import { Link } from "react-router-dom";
+import Book from "../Components/Book";
+import Loading from "../Components/Loading";
+import NextPrev from "../Components/NextPrev";
 
 const Home = ({
   businessBooks,
@@ -14,7 +15,7 @@ const Home = ({
   currentMonth,
 }) => {
   if (isLoading) {
-    return <h1>Is Loading...</h1>;
+    return <Loading />;
   }
 
   return (
