@@ -1,15 +1,17 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../Components/Loading";
+import { useGlobalContext } from "../context";
 
-const BookDetail = ({ books }) => {
+const BookDetail = () => {
+  const { businessBooks } = useGlobalContext();
   const { id } = useParams();
 
-  if (books.length === 0) {
+  if (businessBooks.length === 0) {
     return <Loading />;
   }
 
-  const getBook = books.results.books.filter(
+  const getBook = businessBooks.results.books.filter(
     (book) => book.rank === parseInt(id)
   );
   const { rank, title, author, book_image, description, buy_links } =

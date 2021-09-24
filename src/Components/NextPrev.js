@@ -1,7 +1,9 @@
 import React from "react";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import { useGlobalContext } from "../context";
 
-const NextPrev = ({ month, setMonth, year, setYear, currentMonth }) => {
+const NextPrev = () => {
+  const { month, setMonth, year, setYear, currentMonth } = useGlobalContext();
   const monthNames = [
     "January",
     "February",
